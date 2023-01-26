@@ -16,6 +16,13 @@ This project is a recipe generator that suggests a recipe based on a list of ing
  3. Put in the required API keys
  4. Open the project in your mobile development environment and run it on an emulator or a device.
 
+### Contributing
+ 1. Fork the repository
+ 2. Create your feature branch
+ 3. Commit your changes
+ 4. Push to the branch
+ 5. Create a new Pull Request
+
 ### Running the app
 
 You can test the app by opening it on an emulator or a device and providing a list of ingredients to get a recipe suggestions.
