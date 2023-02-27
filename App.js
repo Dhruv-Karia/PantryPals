@@ -6,7 +6,7 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    axios.get('https://api.spoonacular.com/recipes/random?number=10&apiKey=a9a05452a82e41d5ba2af024868d5a12')
+    axios.get('https://api.spoonacular.com/recipes/random?number=10&apiKey=KEY')
       .then(response => {
         setRecipes(response.data.recipes);
       })
