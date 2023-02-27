@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const searchRecipes = () => {
+    axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=10&apiKey=a9a05452a82e41d5ba2af024868d5a12`)
+      .then(response => {
+        setRecipes(response.data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     axios.get('https://api.spoonacular.com/recipes/random?number=10&apiKey=a9a05452a82e41d5ba2af024868d5a12')
@@ -17,6 +28,17 @@ const App = () => {
 
   return (
     <ScrollView>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search recipes"
+          onChangeText={text => setSearchQuery(text)}
+          value={searchQuery}
+        />
+        <TouchableOpacity style={styles.searchButton} onPress={searchRecipes}>
+          <Text style={styles.searchButtonText}>Search</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.container}>
         {recipes.map(recipe => (
           <View key={recipe.id} style={styles.box}>
@@ -30,6 +52,29 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 10,
+    marginVertical: 5,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  searchInput: {
+    flex: 1,
+    padding: 10,
+    fontSize: 16,
+  },
+  searchButton: {
+    padding: 10,
+    backgroundColor: '#009688',
+  },
+  searchButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
   container: {
     flex: 1,
     flexDirection: 'row',
