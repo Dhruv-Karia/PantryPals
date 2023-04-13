@@ -5,6 +5,7 @@ import axios from 'axios';
 const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [pantry, setPantry] = useState([]);
 
   const searchRecipes = () => {
     axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=10&apiKey=YOUR_API_KEY`)
@@ -46,6 +47,18 @@ const App = () => {
             <Text style={styles.title}>{recipe.title}</Text>
           </View>
         ))}
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.title}>Pantry</Text>
+        {pantry.map(item => (
+          <View style={styles.container}>
+            <Card title="Local Modules">
+              <Text style={styles.paragraph}>{item.name}</Text>
+              <Button><Image style=(styles.image) source={item.img}></Image></Button>
+            </Card>
+          </View>
+        ))}
+        }
       </View>
     </ScrollView>
   );
