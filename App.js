@@ -54,11 +54,10 @@ const App = () => {
           <View style={styles.container}>
             <Card title="Local Modules">
               <Text style={styles.paragraph}>{item.name}</Text>
-              <Button><Image style=(styles.image) source={item.img}></Image></Button>
+              <Button><Image style={styles.image} source={item.img}></Image></Button>
             </Card>
           </View>
         ))}
-        }
       </View>
     </ScrollView>
   );
