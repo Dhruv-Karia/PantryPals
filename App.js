@@ -55,17 +55,58 @@ function MyStack() {
 }
 
 export default function App() {
-
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Auth" component={MyStack} />
-        <Tab.Screen name="Waste" component={WasteScreen} />
-        <Tab.Screen name="Meals" component={MealsScreen} />
-        <Tab.Screen name="Pantry" component={PantryScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator
+        initialRouteName="Signup"
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#3740FE',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
+        <Stack.Screen 
+          name="Signup" 
+          component={Signup} 
+          options={{ title: 'Signup' }}
+        />       
+        <Stack.Screen 
+          name="Login" 
+          component={Login} 
+          options={{
+            title: 'Login',
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen 
+          name="SettingsScreen" 
+          component={SettingsScreen} 
+          options={{
+            title: 'SettingsScreen',
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen 
+          name="MainTabNavigator" 
+          component={MainTabNavigator} 
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
+  );
+}
 
-
+function MainTabNavigator() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Waste" component={WasteScreen} />
+      <Tab.Screen name="Meals" component={MealsScreen} />
+      <Tab.Screen name="Pantry" component={PantryScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 }

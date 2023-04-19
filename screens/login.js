@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
           setIsLoading(false);
           setEmail('');
           setPassword('');
-          navigation.navigate('SettingsScreen');
+          navigation.navigate('MainTabNavigator');
         })
         .catch(error => setErrorMessage(error.message));
     }
