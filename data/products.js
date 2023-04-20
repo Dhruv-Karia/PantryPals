@@ -1,4 +1,4 @@
-[
+export const pantryContent = [
     {"name":"Milk", "category": "Dairy", "protip":"Throw in some fruit and chocolate to enjoy a quick milkshake!", "img":"product_img/milk.jpg"},
     {"name":"Carrot", "category": "Vegetables", "protip":"Save carrot tops to make some pesto!", "img":"product_img/carrot.jpg"},
     {"name":"Grapes", "category": "Fruits", "protip":"Dehydrate week-old grapes to make your own raisins to add to trail mix!", "img":"product_img/grape.jpg"},

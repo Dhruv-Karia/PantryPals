@@ -8,24 +8,105 @@ import WasteScreen from './screens/WasteScreen';
 import MealsScreen from './screens/MealsScreen';
 import PantryScreen from './screens/PantryScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import Login from './screens/login';
+import Signup from './screens/signup';
 
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+function MyStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Signup"
+      screenOptions={{
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#3740FE',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      <Stack.Screen 
+        name="Signup" 
+        component={Signup} 
+        options={{ title: 'Signup' }}
+      />       
+      <Stack.Screen 
+        name="Login" 
+        component={Login} 
+        options={
+          {title: 'Login'},
+          {headerLeft: null} 
+        }
+      />
+      <Stack.Screen 
+       name="SettingsScreen" 
+       component={SettingsScreen} 
+       options={
+         { title: 'SettingsScreen' },
+         {headerLeft: null} 
+       }
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
-
-  const [user, setUser] = React.useState();
-
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Waste" component={WasteScreen} />
-        <Tab.Screen name="Meals" component={MealsScreen} />
-        <Tab.Screen name="Pantry" component={PantryScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator
+        initialRouteName="Signup"
+        screenOptions={{
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#3740FE',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
+        <Stack.Screen 
+          name="Signup" 
+          component={Signup} 
+          options={{ title: 'Signup' }}
+        />       
+        <Stack.Screen 
+          name="Login" 
+          component={Login} 
+          options={{
+            title: 'Login',
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen 
+          name="SettingsScreen" 
+          component={SettingsScreen} 
+          options={{
+            title: 'SettingsScreen',
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen 
+          name="MainTabNavigator" 
+          component={MainTabNavigator} 
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
+  );
+}
+
+function MainTabNavigator() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Waste" component={WasteScreen} />
+      <Tab.Screen name="Meals" component={MealsScreen} />
+      <Tab.Screen name="Pantry" component={PantryScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 }
