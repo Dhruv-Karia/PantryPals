@@ -36,7 +36,7 @@ export default function PantryScreen({ navigation }) {
           data={Dairy}
           renderItem={({ item }) => (
             <View style={styles.box}>
-              <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ItemScreen')}>
                 <Image style={styles.image} source={require('../product_img/apple.jpg')} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
