@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import firebase from '../Firebase';
 
 const MealsScreen = () => {
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const searchRecipes = () => {
+
     axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=10&apiKey=a9a05452a82e41d5ba2af024868d5a12`)
       .then(response => {
         setRecipes(response.data.results);
@@ -16,8 +18,20 @@ const MealsScreen = () => {
       });
   };
 
+  const user = firebase.auth().currentUser;
+  const preferencesRef = firebase.database().ref(`users/${user.uid}/preferences`);
+  let preferencesData;
+  preferencesRef.once('value', (snapshot) => {
+    const preferencesData = snapshot.val(); 
+    console.log(preferencesData);
+  });
+
+  const { cuisines, diet } = preferencesData;
+  const cuisineS = cuisines[0];
+  const dietS = diet;
+
   useEffect(() => {
-    axios.get('https://api.spoonacular.com/recipes/random?number=10&apiKey=a9a05452a82e41d5ba2af024868d5a12')
+    axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a9a05452a82e41d5ba2af024868d5a12&diet=${dietS}&cuisine=${cuisineS}`)
       .then(response => {
         setRecipes(response.data.recipes);
       })

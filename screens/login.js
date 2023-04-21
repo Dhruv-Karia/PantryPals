@@ -15,12 +15,12 @@ const Login = ({ navigation }) => {
       setIsLoading(true);
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then((res) => {
-          console.log(res);
+          //console.log(res);
           console.log('User logged-in successfully!');
           setIsLoading(false);
           setEmail('');
           setPassword('');
-          navigation.navigate('MainTabNavigator');
+          navigation.navigate('Preferences');
         })
         .catch(error => setErrorMessage(error.message));
     }

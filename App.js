@@ -10,6 +10,7 @@ import PantryScreen from './screens/PantryScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import Login from './screens/login';
 import Signup from './screens/signup';
+import Preferences from './screens/Preferences'
 
 
 const Tab = createBottomTabNavigator();
@@ -90,6 +91,16 @@ export default function App() {
             headerLeft: null,
           }}
         />
+
+        <Stack.Screen 
+          name="Preferences" 
+          component={Preferences} 
+          options={{
+            title: 'Preferences',
+            headerLeft: null,
+          }}
+        />
+
         <Stack.Screen 
           name="MainTabNavigator" 
           component={MainTabNavigator} 
