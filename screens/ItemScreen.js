@@ -1,18 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function WasteScreen() {
+export default function ItemScreen(item) {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Monthly Food Waste Report</Text>
-      <View style={styles.box}>
-        <Text>D3 or react native svg chart library</Text>
-      </View>
-      <Text style={styles.subtitle}>Resources</Text>
-      <View style={styles.box}>
+      <Text style={styles.title}>{item.name}</Text>
+      
 
-      </View>
     </View>
   );
 }
