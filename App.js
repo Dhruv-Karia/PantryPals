@@ -11,6 +11,8 @@ import SettingsScreen from './screens/SettingsScreen';
 import Login from './screens/login';
 import Signup from './screens/signup';
 import Preferences from './screens/Preferences'
+import ItemScreen from './screens/ItemScreen';
+import { Drawer } from 'react-native-paper';
 
 
 const Tab = createBottomTabNavigator();
@@ -116,8 +118,17 @@ function MainTabNavigator() {
     <Tab.Navigator>
       <Tab.Screen name="Waste" component={WasteScreen} />
       <Tab.Screen name="Meals" component={MealsScreen} />
-      <Tab.Screen name="Pantry" component={PantryScreen} />
+      <Tab.Screen name="Pantry" component={Pantry} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
+  );
+}
+
+function Pantry() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="PantryScreen" component={PantryScreen} />
+      <Drawer.Screen name="ItemScreen" component={ItemScreen} />
+    </Drawer.Navigator>
   );
 }

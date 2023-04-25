@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+
 export default function ItemScreen(item) {
   
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{item.name}</Text>
-      
+      <Button title="Go back" onPress={() => navigation.goBack()} />
 
     </View>
   );
