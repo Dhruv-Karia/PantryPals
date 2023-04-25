@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Button, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
 import { pantryContent } from '../data/products.js';
 import { ItemScreen } from './ItemScreen.js';
-import { NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function PantryScreen({ navigation }) {
+export default function PantryScreen() {
   const [pantry, setPantry] = useState([
     {"category": "Dairy", "items": []}, 
     {"category": "Vegetables", "items": []}, 
@@ -16,6 +16,7 @@ export default function PantryScreen({ navigation }) {
   const Grains = [];
 
  pantryContent.map(item => {
+  console.log(item);
     if (item.category == "Dairy") {
       Dairy.push(item);
     } else if (item.category == "Vegetables") {
@@ -27,6 +28,7 @@ export default function PantryScreen({ navigation }) {
     }
   });
 
+const navigation = useNavigation();
 
   return (
     <ScrollView>
@@ -35,8 +37,9 @@ export default function PantryScreen({ navigation }) {
         <FlatList
           data={Dairy}
           renderItem={({ item }) => (
+            
             <View style={styles.box}>
-              <TouchableOpacity onPress={() => navigation.navigate('ItemScreen')}>
+              <TouchableOpacity onPress={() => navigation.navigate('ItemScreen', { myObject: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>

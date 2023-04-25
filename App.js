@@ -11,6 +11,7 @@ import SettingsScreen from './screens/SettingsScreen';
 import Login from './screens/login';
 import Signup from './screens/signup';
 import Preferences from './screens/Preferences'
+import ItemScreen from './screens/ItemScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -116,8 +117,17 @@ function MainTabNavigator() {
     <Tab.Navigator>
       <Tab.Screen name="Waste" component={WasteScreen} />
       <Tab.Screen name="Meals" component={MealsScreen} />
-      <Tab.Screen name="Pantry" component={PantryScreen} />
+      <Tab.Screen name="Pantry" component={PantryComponent} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
+}
+
+function PantryComponent() {
+  return(
+    <Stack.Navigator>
+      <Stack.Screen name="PantryScreen" component={PantryScreen} />
+      <Stack.Screen name="ItemScreen" component={ItemScreen} />
+    </Stack.Navigator>
+  )
 }
