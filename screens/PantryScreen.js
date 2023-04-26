@@ -16,6 +16,7 @@ export default function PantryScreen() {
   const Grains = [];
 
  pantryContent.map(item => {
+  console.log(item);
     if (item.category == "Dairy") {
       Dairy.push(item);
     } else if (item.category == "Vegetables") {
@@ -27,11 +28,8 @@ export default function PantryScreen() {
     }
   });
 
-  const navigation = useNavigation();
+const navigation = useNavigation();
 
-  const handlePress = () => {
-    navigation.navigate('ItemScreen');
-  };
 
   return (
     <ScrollView>
@@ -40,8 +38,9 @@ export default function PantryScreen() {
         <FlatList
           data={Dairy}
           renderItem={({ item }) => (
+            
             <View style={styles.box}>
-              <TouchableOpacity onPress={handlePress}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
@@ -56,7 +55,7 @@ export default function PantryScreen() {
           data={Vegetables}
           renderItem={({ item }) => (
             <View style={styles.box}>
-              <TouchableOpacity onPress={console.log(item)}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
@@ -71,7 +70,7 @@ export default function PantryScreen() {
           data={Fruits}
           renderItem={({ item }) => (
             <View style={styles.box}>
-              <TouchableOpacity onPress={console.log(item)}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
@@ -86,7 +85,7 @@ export default function PantryScreen() {
           data={Grains}
           renderItem={({ item }) => (
             <View style={styles.box}>
-              <TouchableOpacity onPress={console.log(item)}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
