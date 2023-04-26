@@ -126,8 +126,8 @@ function MainTabNavigator() {
 function PantryComponent() {
   return(
     <Stack.Navigator>
-      <Stack.Screen name="PantryScreen" component={PantryScreen} />
-      <Stack.Screen name="ItemScreen" component={ItemScreen} />
+      <Stack.Screen name="PantryScreen" component={PantryScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="Product Detail" component={ItemScreen} />
     </Stack.Navigator>
   )
 }

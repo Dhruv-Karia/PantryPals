@@ -39,7 +39,7 @@ const navigation = useNavigation();
           renderItem={({ item }) => (
             
             <View style={styles.box}>
-              <TouchableOpacity onPress={() => navigation.navigate('ItemScreen', { myObject: item })}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
@@ -54,7 +54,7 @@ const navigation = useNavigation();
           data={Vegetables}
           renderItem={({ item }) => (
             <View style={styles.box}>
-              <TouchableOpacity onPress={console.log(item)}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
@@ -69,7 +69,7 @@ const navigation = useNavigation();
           data={Fruits}
           renderItem={({ item }) => (
             <View style={styles.box}>
-              <TouchableOpacity onPress={console.log(item)}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
@@ -84,7 +84,7 @@ const navigation = useNavigation();
           data={Grains}
           renderItem={({ item }) => (
             <View style={styles.box}>
-              <TouchableOpacity onPress={console.log(item)}>
+              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
                 <Image style={styles.image} source={item.img} />
                 <Text style={styles.name}>{item.name}</Text>
               </TouchableOpacity>
