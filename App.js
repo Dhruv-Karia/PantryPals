@@ -118,6 +118,7 @@ function MainTabNavigator() {
       <Tab.Screen name="Waste" component={WasteScreen} />
       <Tab.Screen name="Meals" component={MealsScreen} />
       <Tab.Screen name="Pantry" component={PantryComponent} />
+
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
@@ -130,4 +131,3 @@ function PantryComponent() {
       <Stack.Screen name="Product Detail" component={ItemScreen} />
     </Stack.Navigator>
   )
-}

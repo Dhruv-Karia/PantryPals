@@ -30,6 +30,7 @@ export default function PantryScreen() {
 
 const navigation = useNavigation();
 
+
   return (
     <ScrollView>
       <View style={styles.container}>
