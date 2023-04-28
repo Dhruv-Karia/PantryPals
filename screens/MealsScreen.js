@@ -10,7 +10,7 @@ const MealsScreen = () => {
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   const searchRecipes = () => {
-    axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=10&apiKey=a9a05452a82e41d5ba2af024868d5a12`)
+    axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=10&apiKey=54f02b231f7d4dd48e5573927c3d0edd`)
       .then(response => {
         setRecipes(response.data.results);
       })
@@ -28,7 +28,7 @@ const MealsScreen = () => {
     const cuisineS = cuisines[0];
     const dietS = diet;
 
-    axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a9a05452a82e41d5ba2af024868d5a12&diet=${dietS}&cuisine=${cuisineS}`)
+    axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=54f02b231f7d4dd48e5573927c3d0edd&diet=${dietS}&cuisine=${cuisineS}`)
       .then(response => {
         setRecipes(response.data.results);
       })

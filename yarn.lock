@@ -2015,6 +2015,15 @@
   "resolved" "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz"
   "version" "1.1.0"
 
+"@react-native-community/art@^1.2.0", "@react-native-community/art@>=1.1.2":
+  "integrity" "sha512-a+ZcRGl/BzLa89yi33Mbn5SHavsEXqKUMdbfLf3U8MDLElndPqUetoJyGkv63+BcPO49UMWiQRP1YUz6/zfJ+A=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/art/-/art-1.2.0.tgz"
+  "version" "1.2.0"
+  dependencies:
+    "art" "^0.10.3"
+    "invariant" "^2.2.4"
+    "prop-types" "^15.7.2"
+
 "@react-native-community/cli-clean@^10.1.1":
   "integrity" "sha512-iNsrjzjIRv9yb5y309SWJ8NDHdwYtnCpmxZouQDyOljUdC9MwdZ4ChbtA4rwQyAwgOVfS9F/j56ML3Cslmvrxg=="
   "resolved" "https://registry.npmjs.org/@react-native-community/cli-clean/-/cli-clean-10.1.1.tgz"
@@ -2563,6 +2572,11 @@
   "integrity" "sha512-SleRWjh9JUud2wH1hPs9rZBZ33H6T9HOiL0uwGnGx9FpE6wKGyfWugmbkEOIs6qWrZhg0LWeLziLrEwQJhs5mQ=="
   "resolved" "https://registry.npmjs.org/array-unique/-/array-unique-0.3.2.tgz"
   "version" "0.3.2"
+
+"art@^0.10.3":
+  "integrity" "sha512-HXwbdofRTiJT6qZX/FnchtldzJjS3vkLJxQilc3Xj+ma2MXjY4UAyQ0ls1XZYVnDvVIBiFZbC6QsvtW86TD6tQ=="
+  "resolved" "https://registry.npmjs.org/art/-/art-0.10.3.tgz"
+  "version" "0.10.3"
 
 "asap@~2.0.3", "asap@~2.0.6":
   "integrity" "sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA=="
@@ -6042,6 +6056,21 @@
     "color" "^3.1.2"
     "use-latest-callback" "^0.1.5"
 
+<<<<<<< HEAD
+=======
+"react-native-pie-chart@^2.1.1":
+  "integrity" "sha512-p+IERStIrmeYGrXyhmy1CMXIim9G8dlPmDTrSv14JXRdeAj997DWPqO7ear3PDcRDcVe3SFtuxK2J6yZbjad5Q=="
+  "resolved" "https://registry.npmjs.org/react-native-pie-chart/-/react-native-pie-chart-2.1.1.tgz"
+  "version" "2.1.1"
+
+"react-native-ratings@8.0.4":
+  "integrity" "sha512-Xczu5lskIIRD6BEdz9A0jDRpEck/SFxRqiglkXi0u67yAtI1/pcJC76P4MukCbT8K4BPVl+42w83YqXBoBRl7A=="
+  "resolved" "https://registry.npmjs.org/react-native-ratings/-/react-native-ratings-8.0.4.tgz"
+  "version" "8.0.4"
+  dependencies:
+    "lodash" "^4.17.15"
+
+>>>>>>> 9c3abe4b04229091e83fd5aba8b9a4a6421d37d9
 "react-native-reanimated@~2.14.4":
   "version" "2.14.4"
   dependencies:
@@ -6075,7 +6104,13 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
+<<<<<<< HEAD
 "react-native@*", "react-native@>=0.42.0", "react-native@>=0.57", "react-native@0.71.6":
+=======
+"react-native@*", "react-native@>=0.42.0", "react-native@>=0.57", "react-native@>=0.58.0", "react-native@0.71.6":
+  "integrity" "sha512-gHrDj7qaAaiE41JwaFCh3AtvOqOLuRgZtHKzNiwxakG/wvPAYmG73ECfWHGxjxIx/QT17Hp37Da3ipCei/CayQ=="
+  "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.71.6.tgz"
+>>>>>>> 9c3abe4b04229091e83fd5aba8b9a4a6421d37d9
   "version" "0.71.6"
   dependencies:
     "@jest/create-cache-key-function" "^29.2.1"
@@ -6140,7 +6175,13 @@
     "object-assign" "^4.1.1"
     "react-is" "^16.12.0 || ^17.0.0 || ^18.0.0"
 
+<<<<<<< HEAD
 "react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@>=16.0", "react@>=16.3.0", "react@>=16.8", "react@>=17.0.0", "react@18.2.0":
+=======
+"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@>=16.0", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8", "react@>=17.0.0", "react@18.2.0":
+  "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
+  "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
+>>>>>>> 9c3abe4b04229091e83fd5aba8b9a4a6421d37d9
   "version" "18.2.0"
   dependencies:
     "loose-envify" "^1.1.0"
