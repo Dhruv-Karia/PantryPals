@@ -1,63 +1,38 @@
 import React from 'react';
-import { Linking, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { Linking, StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
 // import PieChart from 'react-native-pie-chart';
 
 export default function WasteScreen() {
   const widthAndHeight = 250
-  const series = [123, 321, 123, 789, 537]
+  const foodData = { "remain": ["apple", "banana", "rice"], "consumed": ["pasta", "tomato", "yogurt"], "expired": ["milk"], "notUsedUp": ["milk"] }
   const sliceColor = ['#F44336','#2196F3','#FFEB3B', '#4CAF50', '#FF9800']
-  const Item = ({ item }) => {
-    return (
-      <View>
-        <Text 
-            style={styles.resourcesText} 
-            onPress={() => {Linking.openURL('https://www.youtube.com/watch?v=8NCm2Q1rZOM&pp=ygUScmVkdWNpbmcgZm9vZHdhc3Rl')}}>Video Tutorials
-        </Text>
-        <Text 
-          style={styles.resourcesText} 
-          onPress={() => {Linking.openURL('https://findacomposter.com/')}}>Compost facilities near me
-        </Text>
-      </View>
-    );
-  };
-  const Row = ({ children }) => (
-    <View style={styles.row}>{children}</View>
-  )
-  const Col = ({ numRows, children }) => {
-    return  (
-      <View style={styles[`${numRows}col`]}>{children}</View>
-    )
-  }
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Monthly Food Waste Report</Text>
         <View style={styles.box}>
-          <Text>Food items remaining: {}</Text>
-          <Text>Food items consumed: {}</Text>
-          <Text>Food items expired: {}</Text>
-          {/* <PieChart widthAndHeight={widthAndHeight} series={series} sliceColor={sliceColor} doughnut={true} coverRadius={0.45} coverFill={'#FFF'} /> */}
-          <Text>We'd noticed {} is not getting used up.</Text>
+          {/* <Text>Food items remaining: {foodData.remain.length}</Text>
+          <Text>Food items consumed: {foodData.consumed.length}</Text>
+          <Text>Food items expired: {foodData.expired.length}</Text> */}
+          {/* <PieChart widthAndHeight={widthAndHeight} series={foodData} sliceColor={sliceColor} doughnut={true} coverRadius={0.45} coverFill={'#FFF'} /> */}
+          <Image style={styles.chart} source={require('../data/Pie-Chart-food-waste.png')} />
+          <Text>We'd noticed <Text style={styles.highlight}>{(foodData.notUsedUp).join(', ')}</Text> is not getting used up.</Text>
         </View>
         <Text style={styles.title}>Resources</Text>
         <View style={styles.resources}>
-          <Row>
-            <Col numRows={2}>
-              <Image source={{uri: 'https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg'}} />
-              <Text 
-                style={styles.resourcesText} 
-                onPress={() => {Linking.openURL('https://www.youtube.com/watch?v=8NCm2Q1rZOM&pp=ygUScmVkdWNpbmcgZm9vZHdhc3Rl')}}>Video Tutorials
-              </Text>
-            </Col>
-            <Col numRows={2}>
-              <Image source={{uri: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fillustrations%2Fcompost-bin&psig=AOvVaw2BiH9oZ483yQqM30H3oU0i&ust=1682727463867000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCKiD17imy_4CFQAAAAAdAAAAABAE'}} />
-              <Text 
-                style={styles.resourcesText} 
-                onPress={() => {Linking.openURL('https://findacomposter.com/')}}>Compost facilities near me
-              </Text>
-            </Col>
-          </Row>
+          <View style={styles.row}>
+            <TouchableOpacity style={styles.ImageContainer} onPress={() => {Linking.openURL('https://www.youtube.com/watch?v=8NCm2Q1rZOM&pp=ygUScmVkdWNpbmcgZm9vZHdhc3Rl')}}>
+             <Image style={styles.logo} source={require('../data/yt_1200.png')} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.ImageContainer} onPress={() => {Linking.openURL('https://findacomposter.com/')}}>
+              <Image style={styles.logo} source={require('../data/compostBin.jpg')} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.resourcesText}>Video Tutorials</Text>
+            <Text style={styles.resourcesText}>Compost facilities near me</Text>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -71,36 +46,56 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   box: {
-    width: '45%',
+    width: '90%',
     height: 200,
     margin: 5,
     backgroundColor: 'white',
     borderRadius: 10,
-    overflow: 'hidden',
   },
   title: {
     padding: 10,
     fontWeight: 'bold',
     fontSize: 40,
+    margin: 10,
   },
   resources: {
     width: '90%',
-    margin: 5,
-    backgroundColor: 'white',
+    backgroundColor: '#FBBC04',
     borderRadius: 10,
-    overflow: 'hidden',
-    flex: 2,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 190,
+    padding: 10,
   },
   row: {
-    flexDirection: "row",
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   resourcesText: {
     fontSize: 16,
+    margin: 10,
   },
-  "2col":  {
-    backgroundColor:  "white",
-    borderColor:  "#fff",
-    borderWidth:  1,
-    flex:  2
+  highlight: {
+    fontWeight: 'bold',
+    color: 'red',
   },
+  logo: {
+    height: '100%',
+    width: '100%',
+    padding: 20,
+    margin: 10,
+    borderRadius: 10,
+  },
+  ImageContainer: {
+    width: '45%',
+    margin: 10,
+  },
+  chart: {
+    width: '100%',
+    height: '100%',
+  }
 });
