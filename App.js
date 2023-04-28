@@ -131,3 +131,4 @@ function PantryComponent() {
       <Stack.Screen name="Product Detail" component={ItemScreen} />
     </Stack.Navigator>
   )
+}

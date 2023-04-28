@@ -1,4 +1,3 @@
-import { randomBinomial } from 'd3';
 import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 
