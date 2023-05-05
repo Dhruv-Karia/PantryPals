@@ -3,9 +3,33 @@ import { View, Text, Image, StyleSheet, ScrollView, TextInput, TouchableOpacity 
 import axios from 'axios';
 import firebase from '../Firebase';
 
-const MealsScreen = () => {
+const RecipeItem = ({ recipe, onSelect }) => {
+  const [select, setSelect] = useState(false);
+
+  const onPress = () => {
+    setSelect(!select);
+    onSelect(recipe.id, !select);
+  };
+
+  return (
+    <View key={recipe.id} style={styles.box}>
+      <TouchableOpacity onPress={onPress}>
+        <Image style={styles.image} source={{ uri: recipe.image }} />
+        <Text style={styles.title}>{recipe.title}</Text>
+      </TouchableOpacity>
+      {select && (
+        <View style={styles.plusButton}>
+          <Text style={styles.plusButtonText}>+</Text>
+        </View>
+      )}
+    </View>
+  );
+};
+
+const MealsScreen = ({ navigation }) => {
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedRecipes, setSelectedRecipes] = useState([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -32,6 +56,31 @@ const MealsScreen = () => {
 
     fetchRecipes();
   }, []);
+
+  const onSelectRecipe = (recipeId, select) => {
+    if (select) {
+      setSelectedRecipes([...selectedRecipes, recipeId]);
+    } else {
+      setSelectedRecipes(selectedRecipes.filter(id => id !== recipeId));
+    }
+  };
+
+  const handleDoneButtonPress = () => {
+    const user = firebase.auth().currentUser;
+    //console.log(selectedRecipes);
+    firebase
+    .database()
+    .ref(`users/${user.uid}/plan`)
+    .set({
+      recipes: selectedRecipes
+    })
+    .then(() => {
+      navigation.navigate('GroceryList');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
 
   const searchRecipes = () => {
     axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=10&apiKey=61409bc29a88436882fe11bf76ad7155`)
@@ -61,11 +110,28 @@ const MealsScreen = () => {
           <View key={recipe.id} style={styles.box}>
             <Image style={styles.image} source={{ uri: recipe.image }} />
             <Text style={styles.title}>{recipe.title}</Text>
+            <TouchableOpacity
+              style={styles.plusButton}
+              onPress={() => {
+                if (selectedRecipes.length < 5) {
+                  const newSelectedRecipes = [...selectedRecipes, recipe];
+                  setSelectedRecipes(newSelectedRecipes);
+                }
+              }}
+            >
+              <Text style={styles.plusButtonText}>+</Text>
+            </TouchableOpacity>
           </View>
         ))}
       </View>
+      {selectedRecipes.length === 5 && (
+        <TouchableOpacity style={styles.doneButton} onPress={handleDoneButtonPress}>
+          <Text style={styles.doneButtonText}>Done</Text>
+        </TouchableOpacity>
+      )}
     </ScrollView>
   );
+  
 };
 
 const styles = StyleSheet.create({
@@ -117,7 +183,38 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  plusButton: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    backgroundColor: 'rgba(0, 150, 136, 0.7)',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1,
+  },
+  plusIcon: {
+    color: '#fff',
+    fontSize: 24,
+  },
+  doneButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#009688',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+  doneButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
 });
+
 
 
 export default MealsScreen;

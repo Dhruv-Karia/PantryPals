@@ -12,6 +12,7 @@ import Login from './screens/login';
 import Signup from './screens/signup';
 import Preferences from './screens/Preferences'
 import ItemScreen from './screens/ItemScreen';
+import GroceryList from './screens/GroceryList';
 
 
 const Tab = createBottomTabNavigator();
@@ -107,6 +108,16 @@ export default function App() {
           component={MainTabNavigator} 
           options={{ headerShown: false }}
         />
+
+        <Stack.Screen 
+          name="GroceryList" 
+          component={GroceryList} 
+          options={{
+            title: 'GroceryList',
+            headerLeft: null,
+          }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -118,7 +129,6 @@ function MainTabNavigator() {
       <Tab.Screen name="Waste" component={WasteScreen} />
       <Tab.Screen name="Meals" component={MealsScreen} />
       <Tab.Screen name="Pantry" component={PantryComponent} />
-
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   );
