@@ -1,5 +1,6 @@
 import React from 'react';
 import { Linking, StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
+import WeeklyNotification from './WeeklyNotification';
 // import PieChart from 'react-native-pie-chart';
 
 export default function WasteScreen() {
@@ -9,6 +10,7 @@ export default function WasteScreen() {
 
   return (
     <ScrollView>
+      <WeeklyNotification />
       <View style={styles.container}>
         <Text style={styles.title}>Monthly Food Waste Report</Text>
         <View style={styles.box}>

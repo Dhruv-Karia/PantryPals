@@ -6,6 +6,7 @@ const SettingsScreen = (props) => {
   const [displayName, setDisplayName] = useState('');
   const [uid, setUid] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [notificationPermission, setNotificationPermission] = useState('');
 
   useEffect(() => {
     setDisplayName(firebase.auth().currentUser.displayName);
@@ -20,6 +21,14 @@ const SettingsScreen = (props) => {
     });
   };
 
+  const handleNotificationPermission = () => {
+    if (notificationPermission == 'granted') {
+      setNotificationPermission('denied');
+    } else {
+      setNotificationPermission('granted');
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.textStyle}>
@@ -30,6 +39,7 @@ const SettingsScreen = (props) => {
         title="Logout"
         onPress={() => signOut()}
       />
+
     </View>
   );
 };
