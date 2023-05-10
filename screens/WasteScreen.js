@@ -1,23 +1,37 @@
 import React from 'react';
 import { Linking, StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
-import WeeklyNotification from './WeeklyNotification';
-// import PieChart from 'react-native-pie-chart';
+import WeeklyPopupScreen from './WeeklyPopupScreen';
+// import { PieChart } from 'react-native-svg-charts';
 
 export default function WasteScreen() {
   const widthAndHeight = 250
   const foodData = { "remain": ["apple", "banana", "rice"], "consumed": ["pasta", "tomato", "yogurt"], "expired": ["milk"], "notUsedUp": ["milk"] }
   const sliceColor = ['#F44336','#2196F3','#FFEB3B', '#4CAF50', '#FF9800']
+  const data = [
+    {
+      key: 1,
+      value: 50,
+      svg: { fill: 'green' },
+    },
+    {
+      key: 2,
+      value: 30,
+      svg: { fill: 'blue' },
+    },
+    {
+      key: 3,
+      value: 20,
+      svg: { fill: 'red' },
+    },
+  ];
 
   return (
     <ScrollView>
-      <WeeklyNotification />
+      <WeeklyPopupScreen />
       <View style={styles.container}>
         <Text style={styles.title}>Monthly Food Waste Report</Text>
         <View style={styles.box}>
-          {/* <Text>Food items remaining: {foodData.remain.length}</Text>
-          <Text>Food items consumed: {foodData.consumed.length}</Text>
-          <Text>Food items expired: {foodData.expired.length}</Text> */}
-          {/* <PieChart widthAndHeight={widthAndHeight} series={foodData} sliceColor={sliceColor} doughnut={true} coverRadius={0.45} coverFill={'#FFF'} /> */}
+        {/* <PieChart style={{ height: 200 }} data={data} /> */}
           <Image style={styles.chart} source={require('../data/Pie-Chart-food-waste.png')} />
           <Text>We'd noticed <Text style={styles.highlight}>{(foodData.notUsedUp).join(', ')}</Text> is not getting used up.</Text>
         </View>

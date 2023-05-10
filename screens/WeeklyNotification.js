@@ -27,8 +27,8 @@ export default function WeeklyNotification() {
   const scheduleNotification = () => {
     Notifications.scheduleNotificationAsync({
       content: {
-        title: 'Reminder',
-        body: 'Don\'t forget to check out our new products!',
+        title: 'Weekly Checklist',
+        body: 'Which recipes have you used this week?',
         sound: true,
       },
       trigger: {
