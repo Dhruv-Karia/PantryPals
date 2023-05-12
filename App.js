@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -125,11 +125,66 @@ export default function App() {
 
 function MainTabNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Waste" component={WasteScreen} />
-      <Tab.Screen name="Meals" component={MealsScreen} />
-      <Tab.Screen name="Pantry" component={PantryComponent} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Navigator 
+      screenOptions={{
+        //tabBarActiveTintColor: '#28590C',
+        //tabBarInactiveTintColor: '#FFFFFF',
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: '#81B622',
+        },
+      }}>
+      <Tab.Screen
+        name="Waste"
+        component={WasteScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('./icons/Waste.png')}
+              style={{ width: 25, height: 25, tintColor: focused ? '#28590C' : '#FFFFFF' }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Meals"
+        component={MealsScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('./icons/Meals.png')}
+              style={{ width: 25, height: 25, tintColor: focused ? '#28590C' : '#FFFFFF' }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Pantry"
+        component={PantryScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('./icons/Pantry.png')}
+              style={{ width: 20, height: 25, tintColor: focused ? '#28590C' : '#FFFFFF' }}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('./icons/Settings.png')}
+              style={{ width: 25, height: 25, tintColor: focused ? '#28590C' : '#FFFFFF' }}
+            />
+          ),
+        }}
+      />
+
+
     </Tab.Navigator>
   );
 }
