@@ -1,29 +1,25 @@
 import React from 'react';
 import { Linking, StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native';
 import WeeklyPopupScreen from './WeeklyPopupScreen';
-// import { PieChart } from 'react-native-svg-charts';
+// import PieChart from 'react-native-svg-charts';
 
 export default function WasteScreen() {
-  const widthAndHeight = 250
   const foodData = { "remain": ["apple", "banana", "rice"], "consumed": ["pasta", "tomato", "yogurt"], "expired": ["milk"], "notUsedUp": ["milk"] }
   const sliceColor = ['#F44336','#2196F3','#FFEB3B', '#4CAF50', '#FF9800']
-  const data = [
-    {
-      key: 1,
-      value: 50,
-      svg: { fill: 'green' },
-    },
-    {
-      key: 2,
-      value: 30,
-      svg: { fill: 'blue' },
-    },
-    {
-      key: 3,
-      value: 20,
-      svg: { fill: 'red' },
-    },
-  ];
+  const data = [ 50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80 ]
+
+  const randomColor = () => ('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)
+
+  const pieData = data
+      .filter(value => value > 0)
+      .map((value, index) => ({
+          value,
+          svg: {
+              fill: randomColor(),
+              onPress: () => console.log('press', index),
+          },
+          key: `pie-${index}`,
+      }))
 
   return (
     <ScrollView>
@@ -31,7 +27,7 @@ export default function WasteScreen() {
       <View style={styles.container}>
         <Text style={styles.title}>Monthly Food Waste Report</Text>
         <View style={styles.box}>
-        {/* <PieChart style={{ height: 200 }} data={data} /> */}
+          {/* <PieChart style={{ height: 200 }} data={pieData} /> */}
           <Image style={styles.chart} source={require('../data/Pie-Chart-food-waste.png')} />
           <Text>We'd noticed <Text style={styles.highlight}>{(foodData.notUsedUp).join(', ')}</Text> is not getting used up.</Text>
         </View>

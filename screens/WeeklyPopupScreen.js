@@ -6,18 +6,18 @@ import { CheckBox } from 'react-native-elements';
 export default function WeeklyPopupScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [recipes, setRecipes] = useState([
-    { id: 1, title: 'Option 1', checked: false },
-    { id: 2, title: 'Option 2', checked: false },
-    { id: 3, title: 'Option 3', checked: false },
-    { id: 4, title: 'Option 4', checked: false },
-    { id: 5, title: 'Option 5', checked: false },
+    { id: 1, title: 'Skinny Veggie Fried Rice', checked: false },
+    { id: 2, title: 'Thai Savory Brown Friend Rice', checked: false },
+    { id: 3, title: 'Chinese Scallion Pancakes', checked: false },
+    { id: 4, title: 'Chinese Steamed Flan', checked: false },
+    { id: 5, title: 'Easy Thai Fried Rice', checked: false },
   ]);
 
   useEffect(() => {
     // Set up a timer to show the modal every week
     const interval = setInterval(() => {
       setIsModalVisible(true);
-    }, 604800000); // 604800000 ms = 1 week
+    }, 30000); // 604800000 ms = 1 week
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(interval);
