@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, CheckBox } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import firebase from '../Firebase';
 import axios from 'axios';
@@ -83,8 +83,8 @@ const GroceryList = ({ navigation }) => {
       {groceryList.map((ingredient, index) => (
         <View key={index} style={styles.ingredientContainer}>
           <Checkbox
-            value={ingredient.checked}
-            onValueChange={() => handleCheckboxChange(index)}
+            status={ingredient.checked ? 'checked' : 'unchecked'}
+            onPress={() => handleCheckboxChange(index)}
             style={styles.checkbox}
           />
           <Text style={styles.ingredient}>
