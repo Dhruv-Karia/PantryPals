@@ -16,7 +16,7 @@ export default function PantryScreen() {
   const Grains = [];
 
  pantryContent.map(item => {
-  console.log(item);
+  // console.log(item);
     if (item.category == "Dairy") {
       Dairy.push(item);
     } else if (item.category == "Vegetables") {
@@ -34,67 +34,73 @@ const navigation = useNavigation();
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.title}>Dairy</Text>
-        <FlatList
-          data={Dairy}
-          renderItem={({ item }) => (
-            
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
-                <Image style={styles.image} source={item.img} />
-                <Text style={styles.name}>{item.name}</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          //Setting the number of column
-          numColumns={2}
-          keyExtractor={(item, index) => index}
-        />
-        <Text style={styles.title}>Vegetables</Text>
-        <FlatList
-          data={Vegetables}
-          renderItem={({ item }) => (
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
-                <Image style={styles.image} source={item.img} />
-                <Text style={styles.name}>{item.name}</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          //Setting the number of column
-          numColumns={2}
-          keyExtractor={(item, index) => index}
-        />
-        <Text style={styles.title}>Fruits</Text>
-        <FlatList
-          data={Fruits}
-          renderItem={({ item }) => (
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
-                <Image style={styles.image} source={item.img} />
-                <Text style={styles.name}>{item.name}</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          //Setting the number of column
-          numColumns={2}
-          keyExtractor={(item, index) => index}
-        />
-        <Text style={styles.title}>Grains</Text>
-        <FlatList
-          data={Grains}
-          renderItem={({ item }) => (
-            <View style={styles.box}>
-              <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
-                <Image style={styles.image} source={item.img} />
-                <Text style={styles.name}>{item.name}</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          //Setting the number of column
-          numColumns={2}
-          keyExtractor={(item, index) => index}
-        />
+        <View>
+          <Button title='Grocery List' onPress={() => {navigation.navigate('GroceryList')}} style={styles.Button}>Grocery List</Button>
+        </View>
+        <View>
+          <Text style={styles.title}>Dairy</Text>
+          <FlatList
+            data={Dairy}
+            renderItem={({ item }) => (
+              
+              <View style={styles.box}>
+                <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
+                  <Image style={styles.image} source={item.img} />
+                  <Text style={styles.name}>{item.name}</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            //Setting the number of column
+            numColumns={2}
+            keyExtractor={(item, index) => index}
+          />
+          <Text style={styles.title}>Vegetables</Text>
+          <FlatList
+            data={Vegetables}
+            renderItem={({ item }) => (
+              <View style={styles.box}>
+                <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
+                  <Image style={styles.image} source={item.img} />
+                  <Text style={styles.name}>{item.name}</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            //Setting the number of column
+            numColumns={2}
+            keyExtractor={(item, index) => index}
+          />
+          <Text style={styles.title}>Fruits</Text>
+          <FlatList
+            data={Fruits}
+            renderItem={({ item }) => (
+              <View style={styles.box}>
+                <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
+                  <Image style={styles.image} source={item.img} />
+                  <Text style={styles.name}>{item.name}</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            //Setting the number of column
+            numColumns={2}
+            keyExtractor={(item, index) => index}
+          />
+          <Text style={styles.title}>Grains</Text>
+          <FlatList
+            data={Grains}
+            renderItem={({ item }) => (
+              <View style={styles.box}>
+                <TouchableOpacity onPress={() => navigation.navigate('Product Detail', { item: item })}>
+                  <Image style={styles.image} source={item.img} />
+                  <Text style={styles.name}>{item.name}</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+            //Setting the number of column
+            numColumns={2}
+            keyExtractor={(item, index) => index}
+          />
+        </View>
+        
       </View>
       {/* <View style={styles.container}>
         <Text style={styles.title}>Dairy</Text>
@@ -144,5 +150,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     backgroundColor: '#97BE11',
     color: 'white',
+  },
+  Button: {
+    backgroundColor: '#2196F3',
+    borderRadius: 4,
+    padding: 16,
+    marginTop: 16,
+    alignItems: 'center',
   },
 });
