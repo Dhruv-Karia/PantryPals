@@ -160,7 +160,7 @@ function MainTabNavigator() {
       />
       <Tab.Screen
         name="Pantry"
-        component={PantryScreen}
+        component={PantryComponent}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image

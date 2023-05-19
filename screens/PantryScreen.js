@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     margin: 10, 
     borderRadius: 10,
     overflow: 'hidden',
-    backgroundColor: 'green'
+    backgroundColor: 'white'
   },
   image: {
     width: '100%',
@@ -148,8 +148,8 @@ const styles = StyleSheet.create({
     padding: 10,
     fontWeight: 'bold',
     fontSize: 16,
-    backgroundColor: '#97BE11',
-    color: 'white',
+    backgroundColor: 'white',
+    color: 'black',
   },
   Button: {
     backgroundColor: '#2196F3',
